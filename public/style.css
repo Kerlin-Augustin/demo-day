@@ -94,7 +94,8 @@ section{
   }
 
   .right-sidebar{
-    width: 65%;
+    /* width: 65%; */
+    width: fit-content;
   }
 
 .profile-main{
@@ -114,3 +115,12 @@ ul a{
   text-decoration: none;
 }
 
+.centerItems{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+main{
+  height: 550px;
+}

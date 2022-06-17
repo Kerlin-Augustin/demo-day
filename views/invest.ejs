@@ -12,25 +12,26 @@
     <h1><span class="fa fa-anchor"></span> MoneyPool</h1>
     <a href="/logout" class="btn btn-default btn-sm">Logout</a>
   </div>
-  <h2>Welcome, <%= user.local.firstName %> <%= user.local.lastName %> </h2>
+  <h2>Welcome, </h2>
   <main class="profile-main">
    <aside class="left-sidebar">
     <ul class="sideItems">
       <a href="/profile"><li>My Account</li></a>
       <a href="/deposit"><li>Deposit</li></a>
-      <!-- <a href=""><li>Transfer</li></a>
-      <a href="/invest"><li>Invest</li></a>
-      <a href=""><li>QR Code</li></a> -->
-      <a href="/sendmoney"><li>Send/Request Money</li></a>
+      <!-- <a href=""><li>Transfer</li></a> -->
+      <!-- <a href="/invest"><li>Invest</li></a> -->
+      <!-- <a href=""><li>QR Code</li></a> -->
+      <a href=""><li>Send/Request Money</li></a>
       <a href="/settings"><li>Settings</li></a>
     </ul>
    </aside>
    <aside class="right-sidebar">
-    <h2>Your balance is: $<%= user.local.accountBalance %></h2>
+
    </aside>
   </main>
 
- 
+  <h3>Light and Dark Mode</h3>
+  <button onclick="myFunction()">Switch mode</button>
 
   <section><h1>Banner Ad to Make Money</h1></section>
 

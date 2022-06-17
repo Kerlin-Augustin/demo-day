@@ -26,11 +26,19 @@
     </ul>
    </aside>
    <aside class="right-sidebar">
-    <h2>Your balance is: $<%= user.local.accountBalance %></h2>
+     <form action="" method="POST">
+      <ul class="centerItems">
+        <li><h3>To: <input required type="text" name="email" placeholder="Enter Email"></h3></li>
+        <li><h3>Send <input type="number" name="send" placeholder="$0"></h3></li>
+        <li><h3>Request <input type="number" name="request" placeholder="$0"></h3></li>
+      </ul>
+      <button>Submit</button>
+    </form>
    </aside>
   </main>
 
- 
+  <!-- <h3>Light and Dark Mode</h3>
+  <button onclick="myFunction()">Switch mode</button> -->
 
   <section><h1>Banner Ad to Make Money</h1></section>
 

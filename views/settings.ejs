@@ -12,6 +12,7 @@
     <div class="page-header text-center">
         <h1><span class="fa fa-anchor"></span> Settings</h1>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        <a href="/profile" class="btn btn-default btn-sm">My Account</a>
     </div>
 
     <div class="row">
@@ -19,7 +20,7 @@
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-6">
             <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
+                <h3><span class="fa fa-user"></span>Close Account</h3>
 
                 <% if (user.local.email) { %>
                     <p>
@@ -28,7 +29,7 @@
                         <strong>password</strong>: <%= user.local.password %>
                     </p>
 
-                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                    <a href="/unlink/local" class="btn btn-default">Delete</a>
                 <% } else { %>
                     <a href="/connect/local" class="btn btn-default">Connect Local</a>
                 <% } %>
@@ -38,6 +39,21 @@
 
       </div>
       </div>
+        <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span>Close Account</h3>
+                <form action="/linkbank" method="post">
+                    <input type="number" name="routingTransit" value= <%= user.local.linkedAccountRT %> id="">
+                    <input type="number" name="accountNumber" value= <%= user.local.linkedAccountNumber %> id="">
+                    <input type="submit">
+                  </form>
+
+            </div>
+        </div>
+
+      </div>
+      </div>
+
 
 <script src="main.js"></script>
 
