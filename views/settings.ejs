@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="setting-background">
 <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Settings</h1>
+        <h1> Settings</h1>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
         <a href="/profile" class="btn btn-default btn-sm">My Account</a>
     </div>
@@ -37,22 +37,24 @@
             </div>
         </div>
 
-      </div>
-      </div>
         <div class="col-sm-6">
             <div class="well">
-                <h3><span class="fa fa-user"></span>Close Account</h3>
+                <h3><span class="fa fa-user"></span>Link Account</h3>
+  
                 <form action="/linkbank" method="post">
-                    <input type="number" name="routingTransit" value= <%= user.local.linkedAccountRT %> id="">
-                    <input type="number" name="accountNumber" value= <%= user.local.linkedAccountNumber %> id="">
+                    <h4>Routing Number</h4>
+                    <input required type="number" name="routingTransit" value= <%= user.local.linkedAccountRT %> id="">
+                    <h4>Account Number</h4>
+                    <input required type="number" name="accountNumber" value= <%= user.local.linkedAccountNumber %> id="">
                     <input type="submit">
                   </form>
-
+  
             </div>
         </div>
+      </div>
+      </div>
 
-      </div>
-      </div>
+    
 
 
 <script src="main.js"></script>

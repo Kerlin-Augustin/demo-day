@@ -1,0 +1,17 @@
+body{
+  background: aquamarine
+}
+
+ul{
+list-style: none
+}
+
+.container{
+  text-align: center;
+}
+
+.col-sm-6{
+  background: white;
+  border-radius: 1rem;
+  margin-top: 19rem;
+}

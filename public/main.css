@@ -2423,3 +2423,14 @@ input, select, textarea {
 			}
 
 	}
+
+	.company-whitepaper{
+		text-align: center;
+		color: black;
+	}
+
+	footer ul{
+		display: flex;
+    justify-content: space-around;
+    align-items: center;
+	}

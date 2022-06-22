@@ -1,48 +1,90 @@
 <!doctype html>
 <html>
-<head>
-    <title>MoneyPool</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-  <div class="page-header text-center">
-    <h1><span class="fa fa-anchor"></span> MoneyPool</h1>
-    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-  </div>
-  <h2>Welcome, <%= user.local.firstName %> <%= user.local.lastName %> </h2>
+<head>
+  <title>MoneyPool</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="area">
+
+
   <main class="profile-main">
-   <aside class="left-sidebar">
-    <ul class="sideItems">
-      <a href="/profile"><li>My Account</li></a>
-      <a href="/deposit"><li>Deposit</li></a>
-      <!-- <a href=""><li>Transfer</li></a>
-      <a href="/invest"><li>Invest</li></a>
-      <a href=""><li>QR Code</li></a> -->
-      <a href="/sendmoney"><li>Send/Request Money</li></a>
-      <a href="/settings"><li>Settings</li></a>
-    </ul>
-   </aside>
-   <aside class="right-sidebar">
-     <form action="" method="POST">
-      <ul class="centerItems">
-        <li><h3>To: <input required type="text" name="email" placeholder="Enter Email"></h3></li>
-        <li><h3>Send <input type="number" name="send" placeholder="$0"></h3></li>
-        <li><h3>Request <input type="number" name="request" placeholder="$0"></h3></li>
+    <aside class="left-sidebar">
+      <ul class="sideItems">
+        <img src="images/cover.png" alt="">
+        <!-- <h1><span class="fa fa-anchor"></span> MoneyPool</h1> -->
+        <li class="welcome">Welcome, <%= user.local.firstName %>
+            <%= user.local.lastName %>
+        </li>
+        <a href="/profile">
+          <li>My Account</li>
+        </a>
+        <a href="/deposit">
+          <li>Deposit</li>
+        </a>
+        <!-- <a href=""><li>Transfer</li></a> -->
+        <a href="/invest">
+          <li>Invest</li>
+        </a>
+        <!-- <a href=""><li>QR Code</li></a> -->
+        <a href="/sendmoney">
+          <li>Send/Request Money</li>
+        </a>
+        <a href="/settings">
+          <li>Settings</li>
+        </a>
+        <a href="/logout">
+          <li>Logout</li>
+        </a>
       </ul>
-      <button>Submit</button>
-    </form>
-   </aside>
+    </aside>
+    <aside class="right-sidebar">
+      <!-- <form action="/transit" method="PUT"> -->
+      <ul class="centerItems">
+        <li>
+          <h3>To: </h3>
+        </li>
+        <h3><input class='sendTo moneypool' required type="email" name="email" placeholder="Enter Email"></h3>
+        <li>
+          <h3>Send: </h3>
+        </li>
+        <h3><input class="sendAmount moneypool" type="number" name="send" placeholder="$0"></h3>
+        <li>
+          <h3>Request: </h3>
+        </li>
+        <h3><input class="requestAmount moneypool" type="number" name="request" placeholder="$0"></h3>
+      </ul>
+      <button class="deposit-btn">Submit</button>
+      <!-- </form> -->
+    </aside>
   </main>
 
   <!-- <h3>Light and Dark Mode</h3>
   <button onclick="myFunction()">Switch mode</button> -->
 
-  <section><h1>Banner Ad to Make Money</h1></section>
+  <section>
+    <h1>Banner Ad to Make Money</h1>
+  </section>
+
+  <ul class="circles">
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+  </ul>
+
 
   <script src="main.js"></script>
 
 </body>
+
 </html>

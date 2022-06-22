@@ -12,7 +12,11 @@ var userSchema = mongoose.Schema({
         password     : String,
         accountBalance : Number,
         linkedAccountRT : String,
-        linkedAccountNumber : String
+        linkedAccountNumber : String,
+        birthday     : String,
+        gender       : String,
+        phoneNumber  : Number,
+        investment   : String
     },
     facebook         : {
         id           : String,

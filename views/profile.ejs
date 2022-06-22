@@ -1,40 +1,126 @@
 <!doctype html>
 <html>
-<head>
-    <title>MoneyPool</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-  <div class="page-header text-center">
-    <h1><span class="fa fa-anchor"></span> MoneyPool</h1>
-    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-  </div>
-  <h2>Welcome, <%= user.local.firstName %> <%= user.local.lastName %> </h2>
+<head>
+  <title>MoneyPool</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="area">
+
+  <!-- <div class="page-header text-center">
+  </div> -->
   <main class="profile-main">
-   <aside class="left-sidebar">
-    <ul class="sideItems">
-      <a href="/profile"><li>My Account</li></a>
-      <a href="/deposit"><li>Deposit</li></a>
-      <!-- <a href=""><li>Transfer</li></a>
-      <a href="/invest"><li>Invest</li></a>
-      <a href=""><li>QR Code</li></a> -->
-      <a href="/sendmoney"><li>Send/Request Money</li></a>
-      <a href="/settings"><li>Settings</li></a>
-    </ul>
-   </aside>
-   <aside class="right-sidebar">
-    <h2>Your balance is: $<%= user.local.accountBalance %></h2>
-   </aside>
+    <aside class="left-sidebar">
+      <ul class="sideItems">
+        <img src="images/cover.png" alt="">
+        <!-- <h1><span class="fa fa-anchor"></span> MoneyPool</h1> -->
+        <li class="welcome">Welcome, <%= user.local.firstName %>
+            <%= user.local.lastName %>
+        </li>
+        <a href="/profile">
+          <li>My Account</li>
+        </a>
+        <a href="/deposit">
+          <li>Deposit</li>
+        </a>
+        <!-- <a href=""><li>Transfer</li></a> -->
+        <a href="/invest">
+          <li>Invest</li>
+        </a>
+        <!-- <a href=""><li>QR Code</li></a> -->
+        <a href="/sendmoney">
+          <li>Send/Request Money</li>
+        </a>
+        <a href="/settings">
+          <li>Settings</li>
+        </a>
+        <a href="/logout">
+          <li>Logout</li>
+        </a>
+      </ul>
+    </aside>
+    <aside class="right-sidebar">
+      <h2>Your balance is: $<%= user.local.accountBalance %>
+      </h2>
+      <h2>Recent transactions: </h2>
+      <ul>
+
+        <% for(let i=0; i < requests.length; i++){ %>
+          <% if(user.local.email===requests[i].sendTo){ %>
+            <% if(requests[i].paid===false){ %>
+              <li>
+                <span>
+                  <%= requests[i].requestAmount %>
+
+                </span>
+                <span>
+                  From: <%= requests[i].requestedBy %>
+
+                </span>
+                <span>
+                  On: <%= requests[i].date %>
+
+                </span>
+                <button class="payRequest">Submit</button>
+              </li>
+              <% } %>
+                <% } %>
+                  <% } %>
+      </ul>
+    </aside>
   </main>
 
- 
 
-  <section><h1>Banner Ad to Make Money</h1></section>
 
+  <section>
+    <h1>Banner Ad to Make Money</h1>
+  </section>
+  <ul class="circles">
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+  </ul>
+
+  <script>
+    let buttonsArray = document.querySelectorAll('.payRequest')
+
+
+    buttonsArray.forEach((button) => {
+      button.addEventListener('click', function () {
+
+        let requestAmount = this.parentNode.childNodes[1].innerText
+        console.log(requestAmount)
+        fetch('/pay', {
+          method: 'put',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            'requestAmount': Number(requestAmount),
+          })
+        })
+          .then((response) => {
+            console.log(response, 'res')
+            if (response.ok) {
+              button.innerText = 'completed'
+              button.disabled = true
+              return response.json()
+
+            }
+          })
+      })
+    })
+  </script>
   <script src="main.js"></script>
 
 </body>
+
 </html>

@@ -6,34 +6,86 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="area">
 
-  <div class="page-header text-center">
-    <h1><span class="fa fa-anchor"></span> MoneyPool</h1>
-    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-  </div>
-  <h2>Welcome, </h2>
+  
   <main class="profile-main">
-   <aside class="left-sidebar">
-    <ul class="sideItems">
-      <a href="/profile"><li>My Account</li></a>
-      <a href="/deposit"><li>Deposit</li></a>
-      <!-- <a href=""><li>Transfer</li></a> -->
-      <!-- <a href="/invest"><li>Invest</li></a> -->
-      <!-- <a href=""><li>QR Code</li></a> -->
-      <a href=""><li>Send/Request Money</li></a>
-      <a href="/settings"><li>Settings</li></a>
-    </ul>
-   </aside>
+    <aside class="left-sidebar">
+      <ul class="sideItems">
+        <img src="images/cover.png" alt="">
+        <!-- <h1><span class="fa fa-anchor"></span> MoneyPool</h1> -->
+        <li class="welcome">Welcome, <%= user.local.firstName %>
+            <%= user.local.lastName %>
+        </li>
+        <a href="/profile">
+          <li>My Account</li>
+        </a>
+        <a href="/deposit">
+          <li>Deposit</li>
+        </a>
+        <!-- <a href=""><li>Transfer</li></a> -->
+        <a href="/invest">
+          <li>Invest</li>
+        </a>
+        <!-- <a href=""><li>QR Code</li></a> -->
+        <a href="/sendmoney">
+          <li>Send/Request Money</li>
+        </a>
+        <a href="/settings">
+          <li>Settings</li>
+        </a>
+        <a href="/logout">
+          <li>Logout</li>
+        </a>
+      </ul>
+    </aside>
    <aside class="right-sidebar">
-
+    <ul>
+      <a href="/company"><li><h2>Cashtopulous</h2></li><a>
+      <li><h4>Percent Stake: 10%</h4></li>
+      <li><h4>Founder: Daquan Daquan Raquan</h4></li>
+      <li><h4>Sector: Technology</h4></li>
+      <li><h4>Industry: Fintech</h4></li>
+    </ul>
+    <ul>
+      <a href="/company2"><li><h2>Flash Card</h2></li><a>
+      <li><h4>Percent Stake: 7%</h4></li>
+      <li><h4>Founder: Dylon Dylon Dylon Dylon Dylon</h4></li>
+      <li><h4>Sector: Financial</h4></li>
+      <li><h4>Industry: Payment Card</h4></li>
+    </ul>
+    <ul>
+      <a href="/company3"><li><h2>FlyBy</h2></li><a>
+      <li><h4>Percent Stake: 5%</h4></li>
+      <li><h4>Founder: Max Johnson</h4></li>
+      <li><h4>Sector: Industrials</h4></li>
+      <li><h4>Industry: Aerospace</h4></li>
+    </ul>
+    <ul>
+      <a href="/company4"><li><h2>Nebula</h2></li><a>
+      <li><h4>Percent Stake: 15%</h4></li>
+      <li><h4>Founder: Jean Pierre</h4></li>
+      <li><h4>Sector: Consumer Discretionary</h4></li>
+      <li><h4>Industry: Sports</h4></li>
+    </ul>
    </aside>
   </main>
 
-  <h3>Light and Dark Mode</h3>
-  <button onclick="myFunction()">Switch mode</button>
-
   <section><h1>Banner Ad to Make Money</h1></section>
+
+  <ul class="circles">
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+    <li>$</li>
+</ul>
+
 
   <script src="main.js"></script>
 

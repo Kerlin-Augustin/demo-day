@@ -65,6 +65,10 @@ module.exports = function(passport) {
                 newUser.local.accountBalance = 0
                 newUser.local.linkedAccountRT = ''
                 newUser.local.linkedAccountNumber = ''
+                newUser.local.birthday = req.body.birthday
+                newUser.local.gender = req.body.gender
+                newUser.local.phoneNumber = req.body.phoneNumber
+                newUser.local.investment = req.body.investment
 				// save the user
                 newUser.save(function(err) {
                     if (err)

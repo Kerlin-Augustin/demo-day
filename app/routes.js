@@ -11,11 +11,11 @@ module.exports = function(app, passport, db) {
   
       // PROFILE SECTION =========================
       app.get('/profile', isLoggedIn, function(req, res) {
-          db.collection('messages').find().toArray((err, result) => {
+          db.collection('requests').find().toArray((err, result) => {
             if (err) return console.log(err)
             res.render('profile.ejs', {
               user : req.user,
-              messages: result
+              requests: result
             })
           })
       });
@@ -41,9 +41,49 @@ module.exports = function(app, passport, db) {
       });
 
       app.get('/sendmoney', isLoggedIn, function(req, res) {
-          db.collection('sendingmoney').find().toArray((err, result) => {
+          db.collection('requests').find().toArray((err, result) => {
             if (err) return console.log(err)
             res.render('sendmoney.ejs', {
+              user : req.user,
+              requests: result
+            })
+          })
+      });
+      
+      app.get('/company', isLoggedIn, function(req, res) {
+          db.collection('user').find().toArray((err, result) => {
+            if (err) return console.log(err)
+            res.render('company.ejs', {
+              user : req.user,
+              messages: result
+            })
+          })
+      });
+
+      app.get('/company2', isLoggedIn, function(req, res) {
+          db.collection('user').find().toArray((err, result) => {
+            if (err) return console.log(err)
+            res.render('company2.ejs', {
+              user : req.user,
+              messages: result
+            })
+          })
+      });
+
+      app.get('/company3', isLoggedIn, function(req, res) {
+          db.collection('user').find().toArray((err, result) => {
+            if (err) return console.log(err)
+            res.render('company3.ejs', {
+              user : req.user,
+              messages: result
+            })
+          })
+      });
+
+      app.get('/company4', isLoggedIn, function(req, res) {
+          db.collection('user').find().toArray((err, result) => {
+            if (err) return console.log(err)
+            res.render('company4.ejs', {
               user : req.user,
               messages: result
             })
@@ -78,6 +118,8 @@ module.exports = function(app, passport, db) {
         })
       })
 
+      
+
       app.post('/linkbank', isLoggedIn, (req, res) => {
         db.collection('users').findOneAndUpdate({
           'local.email': req.user.local.email  
@@ -92,6 +134,23 @@ module.exports = function(app, passport, db) {
           if (err) return console.log(err)
           console.log('saved to database')
           res.redirect('/settings')
+        })
+      })
+
+      app.post('/requestMoney', isLoggedIn, (req, res) => {
+        console.log(req.body)
+        db.collection('requests').insertOne({
+          'sendTo': req.body.sendTo,
+          'requestAmount': req.body.requestAmount,
+          'requestedBy': req.user.local.email,
+          'date': req.body.date,
+          'paid': false   
+        }, 
+        
+        (err, result) => {
+          if (err) return console.log(err)
+          console.log('saved to database')
+          res.redirect('/sendmoney')
         })
       })
       
@@ -116,8 +175,42 @@ module.exports = function(app, passport, db) {
         })
       })
 
-
+      
   
+      app.put('/sendMoney', (req, res) => {
+        console.log(req.body)
+        db.collection('users')
+        .findOneAndUpdate({
+          "local.email": req.body.sendTo
+        }, 
+          {
+          $inc: {
+            "local.accountBalance": req.body.sendAmount
+          }
+        })
+      })
+
+      app.put('/pay', (req, res) => {
+        console.log(req.body)
+        db.collection('requests').findOneAndUpdate({sendTo: req.user.local.email, requestAmount: req.body.requestAmount},
+        {
+          $set: {paid:true}
+        }),
+        db.collection('users')
+        .findOneAndUpdate({
+          "local.email": req.user.local.email
+        }, 
+          {
+          $inc: {
+            "local.accountBalance": - req.body.requestAmount
+          },
+        },
+        (err, result)=>{
+          if(err) return res.send(err);
+          res.send(result)
+        })
+      })
+
       app.put('/moneypool', (req, res) => {
         db.collection('users')
         .findOneAndUpdate({
